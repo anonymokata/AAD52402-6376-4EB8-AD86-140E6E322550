@@ -7,12 +7,19 @@ START_TEST(romanNumeralStringToIntegerReturnsZero)
 }
 END_TEST
 
+START_TEST(romanNumeralStringToIntegerReturnsOneWhenI)
+{
+    ck_assert_int_eq (romanNumeralStringToInteger("I"), 1);
+}
+END_TEST
+
 Suite* romanNumeralSuite(void)
 {
     Suite* s = suite_create("RomanNumeralSuite");
 
     TCase* tc_core = tcase_create("Core");
     tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsZero);
+    tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsOneWhenI);
     suite_add_tcase(s, tc_core);
 
     return s;
