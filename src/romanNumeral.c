@@ -16,6 +16,10 @@ int romanNumeralStringToInteger(const char* str)
     {
         return 50;
     }
+    else if(strcmp(str, "C") == 0)
+    {
+        return 100;
+    }
 
     return 0;
 }

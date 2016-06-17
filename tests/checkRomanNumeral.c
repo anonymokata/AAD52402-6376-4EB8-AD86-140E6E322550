@@ -31,6 +31,12 @@ START_TEST(romanNumeralStringToIntegerReturnsFiftyWhenL)
 }
 END_TEST
 
+START_TEST(romanNumeralStringToIntegerReturnsOneHundredWhenC)
+{
+    ck_assert_int_eq (romanNumeralStringToInteger("C"), 100);
+}
+END_TEST
+
 Suite* romanNumeralSuite(void)
 {
     Suite* s = suite_create("RomanNumeralSuite");
@@ -40,8 +46,8 @@ Suite* romanNumeralSuite(void)
     tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsOneWhenI);
     tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsFiveWhenV);
     tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsFiftyWhenL);
+    tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsOneHundredWhenC);
     suite_add_tcase(s, tc_core);
-
     return s;
 }
 
