@@ -19,6 +19,12 @@ START_TEST(romanNumeralStringToIntegerReturnsFiveWhenV)
 }
 END_TEST
 
+START_TEST(romanNumeralStringToIntegerReturnsTenWhenX)
+{
+    ck_assert_int_eq (romanNumeralStringToInteger("X"), 10);
+}
+END_TEST
+
 Suite* romanNumeralSuite(void)
 {
     Suite* s = suite_create("RomanNumeralSuite");

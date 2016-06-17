@@ -8,6 +8,10 @@ int romanNumeralStringToInteger(const char* str)
     {
         return 5;
     }
+    else if(strcmp(str, "X") == 0)
+    {
+        return 10;
+    }
 
     return 0;
 }
