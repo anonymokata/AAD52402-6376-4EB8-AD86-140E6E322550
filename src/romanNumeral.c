@@ -4,6 +4,10 @@ int romanNumeralStringToInteger(const char* str)
     {
         return 1;
     }
+    else if(strcmp(str, "V") == 0)
+    {
+        return 5;
+    }
 
     return 0;
 }
