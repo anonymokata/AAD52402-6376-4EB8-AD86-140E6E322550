@@ -20,6 +20,10 @@ int romanNumeralStringToInteger(const char* str)
     {
         return 100;
     }
+    else if(strcmp(str, "D") == 0)
+    {
+        return 500;
+    }
 
     return 0;
 }
