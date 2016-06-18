@@ -97,10 +97,24 @@ void toRomanNumeral(const char* str, char* ptr, const int totalValue)
         *ptr = 'M';
         value = 1000;
     }
+    else if(totalValue >= 900)
+    {
+        *ptr = 'C';
+        *(ptr + 1) = 'M';
+        offset = 2;
+        value = 900;
+    }
     else if(totalValue >= 500)
     {
         *ptr = 'D';
         value = 500;
+    }
+    else if(totalValue >= 400)
+    {
+        *ptr = 'C';
+        *(ptr + 1) = 'D';
+        offset = 2;
+        value = 400;
     }
     else if(totalValue >= 100)
     {
