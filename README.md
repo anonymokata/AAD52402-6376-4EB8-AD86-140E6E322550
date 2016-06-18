@@ -1,5 +1,10 @@
 # Roman Numeral Calculator
 
-Execute with
+I use CMake to generate the makefiles
+Obviously, the check libraries are needed.
 
-cmake && make && ctest
+To build and execute the tests run execute the following
+
+$ cmake . && make
+
+Any questions should be directed to wguynes@pillartechnology.com
