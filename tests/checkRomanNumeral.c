@@ -1,69 +1,82 @@
 #include <stdlib.h>
 #include <check.h>
 
+int helper(const char* str)
+{
+    int i = 0;
+    romanNumeralStringToInteger(&i, str);
+    return i;
+}
+
 START_TEST(romanNumeralStringToIntegerReturnsZero)
 {
-    ck_assert_int_eq (romanNumeralStringToInteger(""), 0);
+    ck_assert_int_eq (helper(""), 0);
 }
 END_TEST
 
 START_TEST(romanNumeralStringToIntegerReturnsOneWhenI)
 {
-    ck_assert_int_eq (romanNumeralStringToInteger("I"), 1);
+    ck_assert_int_eq (helper("I"), 1);
 }
 END_TEST
 
 START_TEST(romanNumeralStringToIntegerReturnsFiveWhenV)
 {
-    ck_assert_int_eq (romanNumeralStringToInteger("V"), 5);
+    ck_assert_int_eq (helper("V"), 5);
 }
 END_TEST
 
 START_TEST(romanNumeralStringToIntegerReturnsTenWhenX)
 {
-    ck_assert_int_eq (romanNumeralStringToInteger("X"), 10);
+    ck_assert_int_eq (helper("X"), 10);
 }
 END_TEST
 
 START_TEST(romanNumeralStringToIntegerReturnsFiftyWhenL)
 {
-    ck_assert_int_eq (romanNumeralStringToInteger("L"), 50);
+    ck_assert_int_eq (helper("L"), 50);
 }
 END_TEST
 
 START_TEST(romanNumeralStringToIntegerReturnsOneHundredWhenC)
 {
-    ck_assert_int_eq (romanNumeralStringToInteger("C"), 100);
+    ck_assert_int_eq (helper("C"), 100);
 }
 END_TEST
 
 START_TEST(romanNumeralStringToIntegerReturnsFiveHundredWhenD)
 {
-    ck_assert_int_eq (romanNumeralStringToInteger("D"), 500);
+    ck_assert_int_eq (helper("D"), 500);
 }
 END_TEST
 
 START_TEST(romanNumeralStringToIntegerReturnsOneThousandWhenM)
 {
-    ck_assert_int_eq (romanNumeralStringToInteger("M"), 1000);
+    ck_assert_int_eq (helper("M"), 1000);
 }
 END_TEST
 
 START_TEST(romanNumeralStringToIntegerReturnsNegativeOneWhenInvalidCharacter)
 {
-    ck_assert_int_eq (romanNumeralStringToInteger("A"), -1);
+    ck_assert_int_eq (helper("A"), -1);
 }
 END_TEST
 
 START_TEST(romanNumeralStringToIntegerReturnsZeroWhenEmptyString)
 {
-    ck_assert_int_eq (romanNumeralStringToInteger(""), 0);
+    ck_assert_int_eq (helper(""), 0);
 }
 END_TEST
 
 START_TEST(romanNumeralStringToIntegerReturnsTwoWhenII)
 {
-    ck_assert_int_eq (romanNumeralStringToInteger("II"), 2);
+    ck_assert_int_eq (helper("II"), 2);
+}
+END_TEST
+
+START_TEST(romanNumeralStringToIntegerReturnsThreeWhenIII)
+{
+    ck_assert_int_eq (helper("III"), 3);
 }
 END_TEST
 
@@ -81,6 +94,7 @@ Suite* romanNumeralSuite(void)
     tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsNegativeOneWhenInvalidCharacter);
     tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsZeroWhenEmptyString);
     tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsTwoWhenII);
+    tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsThreeWhenIII);
     suite_add_tcase(s, tc_core);
     return s;
 }
