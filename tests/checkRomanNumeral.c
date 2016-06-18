@@ -162,6 +162,30 @@ START_TEST(timesCharacterRepeatedReturnsOneWhenIV)
 }
 END_TEST
 
+START_TEST(toRomanNumeralSetsEmptyStringWhenZero)
+{
+    char str[128] = "";
+    toRomanNumeral(str, str, 0);
+    ck_assert_str_eq (str, "");
+}
+END_TEST
+
+START_TEST(toRomanNumeralSetsIWhenOne)
+{
+    char str[128] = "";
+    toRomanNumeral(str, str, 1);
+    ck_assert_str_eq (str, "I");
+}
+END_TEST
+
+START_TEST(toRomanNumeralSetsVWhenFive)
+{
+    char str[128] = "";
+    toRomanNumeral(str, str, 5);
+    ck_assert_str_eq (str, "V");
+}
+END_TEST
+
 Suite* romanNumeralSuite(void)
 {
     Suite* s = suite_create("RomanNumeralSuite");
@@ -201,6 +225,13 @@ Suite* romanNumeralSuite(void)
 
     suite_add_tcase(s, tc_timesCharacterRepeated);
 
+    TCase* tc_toRomanNumeral = tcase_create("toRomanNumeral");
+    tcase_add_test(tc_toRomanNumeral, toRomanNumeralSetsEmptyStringWhenZero);
+    tcase_add_test(tc_toRomanNumeral, toRomanNumeralSetsIWhenOne);
+    tcase_add_test(tc_toRomanNumeral, toRomanNumeralSetsVWhenFive);
+
+    suite_add_tcase(s, tc_toRomanNumeral);
+
     return s;
 }
 
@@ -214,3 +245,12 @@ int main(void)
     srunner_free(sr);
     return (numberFailed == 0) ? EXIT_SUCCESS : EXIT_FAILURE;
 }
+
+
+
+
+
+
+
+
+

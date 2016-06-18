@@ -87,3 +87,26 @@ int toInteger(const char* str)
     toIntegerInternal(&i, str, &str[ strlen(str) - 1 ]);
     return i;
 }
+
+
+void toRomanNumeral(const char* str, char* ptr, const int totalValue)
+{
+    int value = 0;
+    if(totalValue >= 5)
+    {
+        *ptr = 'V';
+        value = 5;
+    }
+    else if(totalValue >= 1)
+    {
+        *ptr = 'I';
+        value = 1;
+    }
+    else
+    {
+        *ptr = '\0';
+        return;
+    }
+
+    toRomanNumeral(str, ptr + 1, totalValue - value);
+}
