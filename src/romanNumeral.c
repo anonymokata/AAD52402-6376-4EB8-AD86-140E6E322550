@@ -10,31 +10,31 @@ void romanNumeralStringToInteger(int* value, const char* startChar, const char* 
         return;
     }
 
-    if(*startChar == 'I')
+    if(*endChar == 'I')
     {
         *value += 1;
     }
-    else if(*startChar == 'V')
+    else if(*endChar == 'V')
     {
         *value += 5;
     }
-    else if(*startChar == 'X')
+    else if(*endChar == 'X')
     {
         *value += 10;
     }
-    else if(*startChar == 'L')
+    else if(*endChar == 'L')
     {
         *value += 50;
     }
-    else if(*startChar == 'C')
+    else if(*endChar == 'C')
     {
         *value += 100;
     }
-    else if(*startChar == 'D')
+    else if(*endChar == 'D')
     {
         *value += 500;
     }
-    else if(*startChar == 'M')
+    else if(*endChar == 'M')
     {
         *value += 1000;
     }
