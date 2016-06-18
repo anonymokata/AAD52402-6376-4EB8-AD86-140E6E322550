@@ -88,7 +88,9 @@ Suite* romanNumeralSuite(void)
     tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsZero);
     tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsOneWhenI);
     tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsFiveWhenV);
+    tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsTenWhenX);
     tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsFiftyWhenL);
+    tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsOneHundredWhenC);
     tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsFiveHundredWhenD);
     tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsOneThousandWhenM);
     tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsNegativeOneWhenInvalidCharacter);

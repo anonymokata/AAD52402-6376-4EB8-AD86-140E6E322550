@@ -1,3 +1,20 @@
+#include <stdio.h>
+
+int characterValue(const char c)
+{
+    switch (c)
+    {
+        case 'I' : return 1;
+        case 'V' : return 5;
+        case 'X' : return 10;
+        case 'L' : return 50;
+        case 'C' : return 100;
+        case 'D' : return 500;
+        case 'M' : return 1000;
+        default  : return -1;
+    }
+}
+
 void romanNumeralStringToInteger(int* value, const char* startChar, const char* endChar)
 {
     if(value < 0)
@@ -10,38 +27,7 @@ void romanNumeralStringToInteger(int* value, const char* startChar, const char* 
         return;
     }
 
-    if(*endChar == 'I')
-    {
-        *value += 1;
-    }
-    else if(*endChar == 'V')
-    {
-        *value += 5;
-    }
-    else if(*endChar == 'X')
-    {
-        *value += 10;
-    }
-    else if(*endChar == 'L')
-    {
-        *value += 50;
-    }
-    else if(*endChar == 'C')
-    {
-        *value += 100;
-    }
-    else if(*endChar == 'D')
-    {
-        *value += 500;
-    }
-    else if(*endChar == 'M')
-    {
-        *value += 1000;
-    }
-    else
-    {
-        *value = -1;
-    }
+    *value += characterValue(*endChar);
 
     romanNumeralStringToInteger(value, startChar, endChar - 1);
 }
