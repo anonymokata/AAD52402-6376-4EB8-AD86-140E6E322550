@@ -23,6 +23,11 @@ int isCharacterToRightGreater(const int value, const char* ptr)
     return rightChar != '\0' && characterToValue(rightChar) > value;
 }
 
+int timesCharacterRepeated(const char* ptr)
+{
+    return 0;
+}
+
 void toIntegerInternal(int* totalValue, const char* startPtr, const char* ptr)
 {
     if(totalValue < 0)
