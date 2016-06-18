@@ -166,37 +166,41 @@ Suite* romanNumeralSuite(void)
 {
     Suite* s = suite_create("RomanNumeralSuite");
 
-    TCase* tc_core = tcase_create("Core");
-    tcase_add_test(tc_core, toIntegerReturnsZero);
-    tcase_add_test(tc_core, toIntegerReturnsOneWhenI);
-    tcase_add_test(tc_core, toIntegerReturnsTenWhenX);
-    tcase_add_test(tc_core, toIntegerReturnsOneHundredWhenC);
-    tcase_add_test(tc_core, toIntegerReturnsOneThousandWhenM);
-    tcase_add_test(tc_core, toIntegerReturnsNegativeOneWhenInvalidCharacter);
-    tcase_add_test(tc_core, toIntegerReturnsZeroWhenEmptyString);
-    tcase_add_test(tc_core, toIntegerReturnsTwoWhenII);
-    tcase_add_test(tc_core, toIntegerReturnsFourWhenIV);
+    TCase* tc_toInteger = tcase_create("toInteger");
+    tcase_add_test(tc_toInteger, toIntegerReturnsZero);
+    tcase_add_test(tc_toInteger, toIntegerReturnsOneWhenI);
+    tcase_add_test(tc_toInteger, toIntegerReturnsTenWhenX);
+    tcase_add_test(tc_toInteger, toIntegerReturnsOneHundredWhenC);
+    tcase_add_test(tc_toInteger, toIntegerReturnsOneThousandWhenM);
+    tcase_add_test(tc_toInteger, toIntegerReturnsNegativeOneWhenInvalidCharacter);
+    tcase_add_test(tc_toInteger, toIntegerReturnsZeroWhenEmptyString);
+    tcase_add_test(tc_toInteger, toIntegerReturnsTwoWhenII);
+    tcase_add_test(tc_toInteger, toIntegerReturnsFourWhenIV);
 
-    tcase_add_test(tc_core, toIntegerReturnsThreeWhenIII);
-    tcase_add_test(tc_core, toIntegerReturnsNegativeOneWhenIIII);
-    tcase_add_test(tc_core, toIntegerReturnsThirtyWhenXXX);
-    tcase_add_test(tc_core, toIntegerReturnsNegativeOneWhenXXXX);
-    tcase_add_test(tc_core, toIntegerReturnsThreeHundredWhenCCC);
-    tcase_add_test(tc_core, toIntegerReturnsNegativeOneWhenCCCC);
+    tcase_add_test(tc_toInteger, toIntegerReturnsThreeWhenIII);
+    tcase_add_test(tc_toInteger, toIntegerReturnsNegativeOneWhenIIII);
+    tcase_add_test(tc_toInteger, toIntegerReturnsThirtyWhenXXX);
+    tcase_add_test(tc_toInteger, toIntegerReturnsNegativeOneWhenXXXX);
+    tcase_add_test(tc_toInteger, toIntegerReturnsThreeHundredWhenCCC);
+    tcase_add_test(tc_toInteger, toIntegerReturnsNegativeOneWhenCCCC);
 
-    tcase_add_test(tc_core, toIntegerReturnsFiveWhenV);
-    tcase_add_test(tc_core, toIntegerReturnsNegativeOneWhenVV);
-    tcase_add_test(tc_core, toIntegerReturnsFiftyWhenL);
-    tcase_add_test(tc_core, toIntegerReturnsNegativeOneWhenLL);
-    tcase_add_test(tc_core, toIntegerReturnsFiveHundredWhenD);
-    tcase_add_test(tc_core, toIntegerReturnsNegativeOneWhenDD);
+    tcase_add_test(tc_toInteger, toIntegerReturnsFiveWhenV);
+    tcase_add_test(tc_toInteger, toIntegerReturnsNegativeOneWhenVV);
+    tcase_add_test(tc_toInteger, toIntegerReturnsFiftyWhenL);
+    tcase_add_test(tc_toInteger, toIntegerReturnsNegativeOneWhenLL);
+    tcase_add_test(tc_toInteger, toIntegerReturnsFiveHundredWhenD);
+    tcase_add_test(tc_toInteger, toIntegerReturnsNegativeOneWhenDD);
 
-    tcase_add_test(tc_core, timesCharacterRepeatedReturnsZeroWhenEmptyString);
-    tcase_add_test(tc_core, timesCharacterRepeatedReturnsOneWhenI);
-    tcase_add_test(tc_core, timesCharacterRepeatedReturnsTwoWhenII);
-    tcase_add_test(tc_core, timesCharacterRepeatedReturnsOneWhenIV);
+    suite_add_tcase(s, tc_toInteger);
 
-    suite_add_tcase(s, tc_core);
+    TCase* tc_timesCharacterRepeated = tcase_create("timesCharacterRepeated");
+    tcase_add_test(tc_timesCharacterRepeated, timesCharacterRepeatedReturnsZeroWhenEmptyString);
+    tcase_add_test(tc_timesCharacterRepeated, timesCharacterRepeatedReturnsOneWhenI);
+    tcase_add_test(tc_timesCharacterRepeated, timesCharacterRepeatedReturnsTwoWhenII);
+    tcase_add_test(tc_timesCharacterRepeated, timesCharacterRepeatedReturnsOneWhenIV);
+
+    suite_add_tcase(s, tc_timesCharacterRepeated);
+
     return s;
 }
 
