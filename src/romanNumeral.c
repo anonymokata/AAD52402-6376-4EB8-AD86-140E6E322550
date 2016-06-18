@@ -52,24 +52,20 @@ void toIntegerInternal(int* totalValue, const char* startPtr, const char* ptr)
 
     int value = characterToValue(*ptr);
 
+    int maximumAllowedRepeats = 1;
+
     if(value > 0)
     {
         if(*ptr == 'I' || *ptr == 'X' || *ptr == 'C')
         {
-            if(timesCharacterRepeated(ptr) > 3)
-            {
-                *totalValue = -1;
-                return;
-            }
+            maximumAllowedRepeats = 3;
         }
-        else
-        {
-            if(timesCharacterRepeated(ptr) > 1)
-            {
-                *totalValue = -1;
-                return;
-            }
-        }
+    }
+
+    if(timesCharacterRepeated(ptr) > maximumAllowedRepeats)
+    {
+        *totalValue = -1;
+        return;
     }
 
     if(isCharacterToRightGreater(value, ptr))
