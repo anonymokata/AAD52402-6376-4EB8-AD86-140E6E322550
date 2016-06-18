@@ -49,15 +49,15 @@ START_TEST(romanNumeralStringToIntegerReturnsOneThousandWhenM)
 }
 END_TEST
 
-START_TEST(romanNumeralStringToIntegerReturnsZeroWhenInvalidCharacter)
+START_TEST(romanNumeralStringToIntegerReturnsNegativeOneWhenInvalidCharacter)
 {
-    ck_assert_int_eq (romanNumeralStringToInteger("A"), 0);
+    ck_assert_int_eq (romanNumeralStringToInteger("A"), -1);
 }
 END_TEST
 
 START_TEST(romanNumeralStringToIntegerReturnsZeroWhenEmptyString)
 {
-    ck_assert_int_eq (romanNumeralStringToInteger("A"), 0);
+    ck_assert_int_eq (romanNumeralStringToInteger(""), 0);
 }
 END_TEST
 
@@ -78,7 +78,7 @@ Suite* romanNumeralSuite(void)
     tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsFiftyWhenL);
     tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsFiveHundredWhenD);
     tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsOneThousandWhenM);
-    tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsZeroWhenInvalidCharacter);
+    tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsNegativeOneWhenInvalidCharacter);
     tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsZeroWhenEmptyString);
     tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsTwoWhenII);
     suite_add_tcase(s, tc_core);
