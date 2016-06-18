@@ -107,10 +107,24 @@ void toRomanNumeral(const char* str, char* ptr, const int totalValue)
         *ptr = 'C';
         value = 100;
     }
+    else if(totalValue >= 90)
+    {
+        *ptr = 'X';
+        *(ptr + 1) = 'C';
+        offset = 2;
+        value = 90;
+    }
     else if(totalValue >= 50)
     {
         *ptr = 'L';
         value = 50;
+    }
+    else if(totalValue >= 40)
+    {
+        *ptr = 'X';
+        *(ptr + 1) = 'L';
+        offset = 2;
+        value = 40;
     }
     else if(totalValue >= 10)
     {
