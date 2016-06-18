@@ -1,35 +1,40 @@
-void romanNumeralStringToInteger(int* value, const char* str)
+void romanNumeralStringToInteger(int* value, const char* startChar, const char* endChar)
 {
-    if (value < 0 || str[0] == '\0')
+    if(value < 0)
+    {
+        return;
+    }
+       
+    if(endChar < startChar)
     {
         return;
     }
 
-    if(str[0] == 'I')
+    if(*startChar == 'I')
     {
         *value += 1;
     }
-    else if(str[0] == 'V')
+    else if(*startChar == 'V')
     {
         *value += 5;
     }
-    else if(str[0] == 'X')
+    else if(*startChar == 'X')
     {
         *value += 10;
     }
-    else if(str[0] == 'L')
+    else if(*startChar == 'L')
     {
         *value += 50;
     }
-    else if(str[0] == 'C')
+    else if(*startChar == 'C')
     {
         *value += 100;
     }
-    else if(str[0] == 'D')
+    else if(*startChar == 'D')
     {
         *value += 500;
     }
-    else if(str[0] == 'M')
+    else if(*startChar == 'M')
     {
         *value += 1000;
     }
@@ -38,5 +43,5 @@ void romanNumeralStringToInteger(int* value, const char* str)
         *value = -1;
     }
 
-    romanNumeralStringToInteger(value, str + 1);
+    romanNumeralStringToInteger(value, startChar, endChar - 1);
 }

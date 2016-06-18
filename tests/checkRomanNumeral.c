@@ -4,7 +4,7 @@
 int helper(const char* str)
 {
     int i = 0;
-    romanNumeralStringToInteger(&i, str);
+    romanNumeralStringToInteger(&i, str, &str[ strlen(str) - 1 ]);
     return i;
 }
 
