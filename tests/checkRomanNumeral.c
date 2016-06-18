@@ -210,6 +210,14 @@ START_TEST(toRomanNumeralSetsCWhenOneHundred)
 }
 END_TEST
 
+START_TEST(toRomanNumeralSetsDWhenFiveHundred)
+{
+    char str[128] = "";
+    toRomanNumeral(str, str, 500);
+    ck_assert_str_eq (str, "D");
+}
+END_TEST
+
 Suite* romanNumeralSuite(void)
 {
     Suite* s = suite_create("RomanNumeralSuite");
