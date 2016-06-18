@@ -2,79 +2,79 @@
 #include <check.h>
 #include "../src/romanNumeral.h"
 
-START_TEST(romanNumeralStringToIntegerReturnsZero)
+START_TEST(toIntegerReturnsZero)
 {
     ck_assert_int_eq (toInteger(""), 0);
 }
 END_TEST
 
-START_TEST(romanNumeralStringToIntegerReturnsOneWhenI)
+START_TEST(toIntegerReturnsOneWhenI)
 {
     ck_assert_int_eq (toInteger("I"), 1);
 }
 END_TEST
 
-START_TEST(romanNumeralStringToIntegerReturnsFiveWhenV)
+START_TEST(toIntegerReturnsFiveWhenV)
 {
     ck_assert_int_eq (toInteger("V"), 5);
 }
 END_TEST
 
-START_TEST(romanNumeralStringToIntegerReturnsTenWhenX)
+START_TEST(toIntegerReturnsTenWhenX)
 {
     ck_assert_int_eq (toInteger("X"), 10);
 }
 END_TEST
 
-START_TEST(romanNumeralStringToIntegerReturnsFiftyWhenL)
+START_TEST(toIntegerReturnsFiftyWhenL)
 {
     ck_assert_int_eq (toInteger("L"), 50);
 }
 END_TEST
 
-START_TEST(romanNumeralStringToIntegerReturnsOneHundredWhenC)
+START_TEST(toIntegerReturnsOneHundredWhenC)
 {
     ck_assert_int_eq (toInteger("C"), 100);
 }
 END_TEST
 
-START_TEST(romanNumeralStringToIntegerReturnsFiveHundredWhenD)
+START_TEST(toIntegerReturnsFiveHundredWhenD)
 {
     ck_assert_int_eq (toInteger("D"), 500);
 }
 END_TEST
 
-START_TEST(romanNumeralStringToIntegerReturnsOneThousandWhenM)
+START_TEST(toIntegerReturnsOneThousandWhenM)
 {
     ck_assert_int_eq (toInteger("M"), 1000);
 }
 END_TEST
 
-START_TEST(romanNumeralStringToIntegerReturnsNegativeOneWhenInvalidCharacter)
+START_TEST(toIntegerReturnsNegativeOneWhenInvalidCharacter)
 {
     ck_assert_int_eq (toInteger("A"), -1);
 }
 END_TEST
 
-START_TEST(romanNumeralStringToIntegerReturnsZeroWhenEmptyString)
+START_TEST(toIntegerReturnsZeroWhenEmptyString)
 {
     ck_assert_int_eq (toInteger(""), 0);
 }
 END_TEST
 
-START_TEST(romanNumeralStringToIntegerReturnsTwoWhenII)
+START_TEST(toIntegerReturnsTwoWhenII)
 {
     ck_assert_int_eq (toInteger("II"), 2);
 }
 END_TEST
 
-START_TEST(romanNumeralStringToIntegerReturnsThreeWhenIII)
+START_TEST(toIntegerReturnsThreeWhenIII)
 {
     ck_assert_int_eq (toInteger("III"), 3);
 }
 END_TEST
 
-START_TEST(romanNumeralStringToIntegerReturnsFourWhenIV)
+START_TEST(toIntegerReturnsFourWhenIV)
 {
     ck_assert_int_eq (toInteger("IV"), 4);
 }
@@ -85,19 +85,19 @@ Suite* romanNumeralSuite(void)
     Suite* s = suite_create("RomanNumeralSuite");
 
     TCase* tc_core = tcase_create("Core");
-    tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsZero);
-    tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsOneWhenI);
-    tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsFiveWhenV);
-    tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsTenWhenX);
-    tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsFiftyWhenL);
-    tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsOneHundredWhenC);
-    tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsFiveHundredWhenD);
-    tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsOneThousandWhenM);
-    tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsNegativeOneWhenInvalidCharacter);
-    tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsZeroWhenEmptyString);
-    tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsTwoWhenII);
-    tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsThreeWhenIII);
-    tcase_add_test(tc_core, romanNumeralStringToIntegerReturnsFourWhenIV);
+    tcase_add_test(tc_core, toIntegerReturnsZero);
+    tcase_add_test(tc_core, toIntegerReturnsOneWhenI);
+    tcase_add_test(tc_core, toIntegerReturnsFiveWhenV);
+    tcase_add_test(tc_core, toIntegerReturnsTenWhenX);
+    tcase_add_test(tc_core, toIntegerReturnsFiftyWhenL);
+    tcase_add_test(tc_core, toIntegerReturnsOneHundredWhenC);
+    tcase_add_test(tc_core, toIntegerReturnsFiveHundredWhenD);
+    tcase_add_test(tc_core, toIntegerReturnsOneThousandWhenM);
+    tcase_add_test(tc_core, toIntegerReturnsNegativeOneWhenInvalidCharacter);
+    tcase_add_test(tc_core, toIntegerReturnsZeroWhenEmptyString);
+    tcase_add_test(tc_core, toIntegerReturnsTwoWhenII);
+    tcase_add_test(tc_core, toIntegerReturnsThreeWhenIII);
+    tcase_add_test(tc_core, toIntegerReturnsFourWhenIV);
     suite_add_tcase(s, tc_core);
     return s;
 }

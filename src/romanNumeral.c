@@ -17,13 +17,10 @@ int characterToValue(const char c)
     }
 }
 
-void ifCharacterToRightIsGreaterMakeValueNegative(int* value, const char* ptr)
+int isCharacterToRightGreater(const int value, const char* ptr)
 {
     const char rightChar = *(ptr + 1);
-    if(rightChar && characterToValue(rightChar) > *value)
-    {
-        *value *= -1;
-    }
+    return rightChar != '\0' && characterToValue(rightChar) > value;
 }
 
 void toIntegerInternal(int* totalValue, const char* startPtr, const char* ptr)
@@ -40,7 +37,10 @@ void toIntegerInternal(int* totalValue, const char* startPtr, const char* ptr)
 
     int value = characterToValue(*ptr);
 
-    ifCharacterToRightIsGreaterMakeValueNegative(&value, ptr);
+    if(isCharacterToRightGreater(value, ptr))
+    {
+        value *= -1;
+    }
 
     *totalValue += value;
 
