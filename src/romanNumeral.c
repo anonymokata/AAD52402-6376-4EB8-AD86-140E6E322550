@@ -92,7 +92,12 @@ int toInteger(const char* str)
 void toRomanNumeral(const char* str, char* ptr, const int totalValue)
 {
     int value = 0;
-    if(totalValue >= 5)
+    if(totalValue >= 10)
+    {
+        *ptr = 'X';
+        value = 10;
+    }
+    else if(totalValue >= 5)
     {
         *ptr = 'V';
         value = 5;

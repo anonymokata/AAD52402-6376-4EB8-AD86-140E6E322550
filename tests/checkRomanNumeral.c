@@ -186,6 +186,14 @@ START_TEST(toRomanNumeralSetsVWhenFive)
 }
 END_TEST
 
+START_TEST(toRomanNumeralSetsXWhenTen)
+{
+    char str[128] = "";
+    toRomanNumeral(str, str, 10);
+    ck_assert_str_eq (str, "X");
+}
+END_TEST
+
 Suite* romanNumeralSuite(void)
 {
     Suite* s = suite_create("RomanNumeralSuite");
@@ -229,6 +237,7 @@ Suite* romanNumeralSuite(void)
     tcase_add_test(tc_toRomanNumeral, toRomanNumeralSetsEmptyStringWhenZero);
     tcase_add_test(tc_toRomanNumeral, toRomanNumeralSetsIWhenOne);
     tcase_add_test(tc_toRomanNumeral, toRomanNumeralSetsVWhenFive);
+    tcase_add_test(tc_toRomanNumeral, toRomanNumeralSetsXWhenTen);
 
     suite_add_tcase(s, tc_toRomanNumeral);
 
