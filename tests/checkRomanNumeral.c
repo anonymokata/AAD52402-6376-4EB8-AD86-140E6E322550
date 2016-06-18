@@ -226,6 +226,22 @@ START_TEST(toRomanNumeralSetsMWhenOneThousand)
 }
 END_TEST
 
+START_TEST(toRomanNumeralSetsIVWhenFour)
+{
+    char str[128] = "";
+    toRomanNumeral(str, str, 4);
+    ck_assert_str_eq (str, "IV");
+}
+END_TEST
+
+START_TEST(toRomanNumeralSetsIXWhenNine)
+{
+    char str[128] = "";
+    toRomanNumeral(str, str, 9);
+    ck_assert_str_eq (str, "IX");
+}
+END_TEST
+
 Suite* romanNumeralSuite(void)
 {
     Suite* s = suite_create("RomanNumeralSuite");
@@ -262,7 +278,6 @@ Suite* romanNumeralSuite(void)
     tcase_add_test(tc_timesCharacterRepeated, timesCharacterRepeatedReturnsOneWhenI);
     tcase_add_test(tc_timesCharacterRepeated, timesCharacterRepeatedReturnsTwoWhenII);
     tcase_add_test(tc_timesCharacterRepeated, timesCharacterRepeatedReturnsOneWhenIV);
-
     suite_add_tcase(s, tc_timesCharacterRepeated);
 
     TCase* tc_toRomanNumeral = tcase_create("toRomanNumeral");
@@ -274,6 +289,8 @@ Suite* romanNumeralSuite(void)
     tcase_add_test(tc_toRomanNumeral, toRomanNumeralSetsCWhenOneHundred);
     tcase_add_test(tc_toRomanNumeral, toRomanNumeralSetsDWhenFiveHundred);
     tcase_add_test(tc_toRomanNumeral, toRomanNumeralSetsMWhenOneThousand);
+    tcase_add_test(tc_toRomanNumeral, toRomanNumeralSetsIVWhenFour);
+    tcase_add_test(tc_toRomanNumeral, toRomanNumeralSetsIXWhenNine);
     suite_add_tcase(s, tc_toRomanNumeral);
 
     return s;
@@ -289,12 +306,6 @@ int main(void)
     srunner_free(sr);
     return (numberFailed == 0) ? EXIT_SUCCESS : EXIT_FAILURE;
 }
-
-
-
-
-
-
 
 
 

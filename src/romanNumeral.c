@@ -91,6 +91,7 @@ int toInteger(const char* str)
 void toRomanNumeral(const char* str, char* ptr, const int totalValue)
 {
     int value = 0;
+    int offset = 1;
     if(totalValue >= 1000)
     {
         *ptr = 'M';
@@ -116,10 +117,24 @@ void toRomanNumeral(const char* str, char* ptr, const int totalValue)
         *ptr = 'X';
         value = 10;
     }
+    else if(totalValue >= 9)
+    {
+        *ptr = 'I';
+        *(ptr + 1) = 'X';
+        offset = 2;
+        value = 9;
+    }
     else if(totalValue >= 5)
     {
         *ptr = 'V';
         value = 5;
+    }
+    else if(totalValue >= 4)
+    {
+        *ptr = 'I';
+        *(ptr + 1) = 'V';
+        offset = 2;
+        value = 4;
     }
     else if(totalValue >= 1)
     {
@@ -132,5 +147,5 @@ void toRomanNumeral(const char* str, char* ptr, const int totalValue)
         return;
     }
 
-    toRomanNumeral(str, ptr + 1, totalValue - value);
+    toRomanNumeral(str, ptr + offset, totalValue - value);
 }
