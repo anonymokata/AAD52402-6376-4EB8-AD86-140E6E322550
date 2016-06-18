@@ -80,6 +80,12 @@ START_TEST(romanNumeralStringToIntegerReturnsThreeWhenIII)
 }
 END_TEST
 
+START_TEST(romanNumeralStringToIntegerReturnsFourWhenIV)
+{
+    ck_assert_int_eq (helper("IV"), 4);
+}
+END_TEST
+
 Suite* romanNumeralSuite(void)
 {
     Suite* s = suite_create("RomanNumeralSuite");

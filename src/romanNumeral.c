@@ -15,19 +15,29 @@ int characterValue(const char c)
     }
 }
 
-void romanNumeralStringToInteger(int* value, const char* startChar, const char* endChar)
+void romanNumeralStringToInteger(int* value, const char* startPtr, const char* evalPtr)
 {
     if(value < 0)
     {
         return;
     }
        
-    if(endChar < startChar)
+    if(evalPtr < startPtr)
     {
         return;
     }
 
-    *value += characterValue(*endChar);
+    int evalValue = characterValue(*evalPtr);
 
-    romanNumeralStringToInteger(value, startChar, endChar - 1);
+    const char rightChar = *(evalPtr + 1);
+    if(rightChar && characterValue(rightChar) > evalValue)
+    {
+        *value -= evalValue;
+    }
+    else
+    {
+        *value += evalValue;
+    }
+
+    romanNumeralStringToInteger(value, startPtr, evalPtr - 1);
 }
