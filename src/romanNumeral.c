@@ -88,13 +88,17 @@ int toInteger(const char* str)
     return i;
 }
 
-
 void toRomanNumeral(const char* str, char* ptr, const int totalValue)
 {
     int value = 0;
-    if(totalValue >= 500)
+    if(totalValue >= 1000)
     {
-        *ptr = 'C';
+        *ptr = 'M';
+        value = 1000;
+    }
+    else if(totalValue >= 500)
+    {
+        *ptr = 'D';
         value = 500;
     }
     else if(totalValue >= 100)
