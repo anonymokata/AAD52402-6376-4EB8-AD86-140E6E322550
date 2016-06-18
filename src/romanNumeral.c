@@ -182,4 +182,3 @@ void toRomanNumeral(char* str, const int totalValue)
 {
     toRomanNumeralInternal(str, str, totalValue);
 }
-
