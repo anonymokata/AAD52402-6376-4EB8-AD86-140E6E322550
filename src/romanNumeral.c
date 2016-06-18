@@ -38,6 +38,16 @@ int timesCharacterRepeated(const char* ptr)
     return 1;
 }
 
+int maximumAllowedRepeats(const char* ptr)
+{
+    int repeats = 1;
+    if(*ptr == 'I' || *ptr == 'X' || *ptr == 'C')
+    {
+        repeats = 3;
+    }
+    return repeats;
+}
+
 void toIntegerInternal(int* totalValue, const char* startPtr, const char* ptr)
 {
     if(totalValue < 0)
@@ -52,20 +62,13 @@ void toIntegerInternal(int* totalValue, const char* startPtr, const char* ptr)
 
     int value = characterToValue(*ptr);
 
-    int maximumAllowedRepeats = 1;
-
     if(value > 0)
     {
-        if(*ptr == 'I' || *ptr == 'X' || *ptr == 'C')
+        if(timesCharacterRepeated(ptr) > maximumAllowedRepeats(ptr))
         {
-            maximumAllowedRepeats = 3;
+            *totalValue = -1;
+            return;
         }
-    }
-
-    if(timesCharacterRepeated(ptr) > maximumAllowedRepeats)
-    {
-        *totalValue = -1;
-        return;
     }
 
     if(isCharacterToRightGreater(value, ptr))
