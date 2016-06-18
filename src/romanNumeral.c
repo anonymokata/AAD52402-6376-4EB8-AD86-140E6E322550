@@ -1,6 +1,8 @@
+#include "romanNumeral.h"
+#include <string.h>
 #include <stdio.h>
 
-int characterValue(const char c)
+int characterToValue(const char c)
 {
     switch (c)
     {
@@ -15,29 +17,39 @@ int characterValue(const char c)
     }
 }
 
-void romanNumeralStringToInteger(int* value, const char* startPtr, const char* evalPtr)
+void ifCharacterToRightIsGreaterMakeValueNegative(int* value, const char* ptr)
 {
-    if(value < 0)
+    const char rightChar = *(ptr + 1);
+    if(rightChar && characterToValue(rightChar) > *value)
+    {
+        *value *= -1;
+    }
+}
+
+void toIntegerInternal(int* totalValue, const char* startPtr, const char* ptr)
+{
+    if(totalValue < 0)
     {
         return;
     }
        
-    if(evalPtr < startPtr)
+    if(ptr < startPtr)
     {
         return;
     }
 
-    int evalValue = characterValue(*evalPtr);
+    int value = characterToValue(*ptr);
 
-    const char rightChar = *(evalPtr + 1);
-    if(rightChar && characterValue(rightChar) > evalValue)
-    {
-        *value -= evalValue;
-    }
-    else
-    {
-        *value += evalValue;
-    }
+    ifCharacterToRightIsGreaterMakeValueNegative(&value, ptr);
 
-    romanNumeralStringToInteger(value, startPtr, evalPtr - 1);
+    *totalValue += value;
+
+    toIntegerInternal(totalValue, startPtr, ptr - 1);
+}
+
+int toInteger(const char* str)
+{
+    int i = 0;
+    toIntegerInternal(&i, str, &str[ strlen(str) - 1 ]);
+    return i;
 }
