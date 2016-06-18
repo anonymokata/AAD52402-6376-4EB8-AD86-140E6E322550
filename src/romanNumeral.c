@@ -25,7 +25,17 @@ int isCharacterToRightGreater(const int value, const char* ptr)
 
 int timesCharacterRepeated(const char* ptr)
 {
-    return 0;
+    if(*ptr == '\0')
+    {
+        return 0;
+    }
+
+    if(*ptr == *(ptr + 1))
+    {
+        return 1 + timesCharacterRepeated(ptr + 1);
+    }
+
+    return 1;
 }
 
 void toIntegerInternal(int* totalValue, const char* startPtr, const char* ptr)

@@ -86,6 +86,24 @@ START_TEST(timesCharacterRepeatedReturnsZeroWhenEmptyString)
 }
 END_TEST
 
+START_TEST(timesCharacterRepeatedReturnsOneWhenI)
+{
+    ck_assert_int_eq (timesCharacterRepeated("I"), 1);
+}
+END_TEST
+
+START_TEST(timesCharacterRepeatedReturnsTwoWhenII)
+{
+    ck_assert_int_eq (timesCharacterRepeated("II"), 2);
+}
+END_TEST
+
+START_TEST(timesCharacterRepeatedReturnsOneWhenIV)
+{
+    ck_assert_int_eq (timesCharacterRepeated("IV"), 1);
+}
+END_TEST
+
 Suite* romanNumeralSuite(void)
 {
     Suite* s = suite_create("RomanNumeralSuite");
@@ -106,6 +124,9 @@ Suite* romanNumeralSuite(void)
     tcase_add_test(tc_core, toIntegerReturnsFourWhenIV);
 
     tcase_add_test(tc_core, timesCharacterRepeatedReturnsZeroWhenEmptyString);
+    tcase_add_test(tc_core, timesCharacterRepeatedReturnsOneWhenI);
+    tcase_add_test(tc_core, timesCharacterRepeatedReturnsTwoWhenII);
+    tcase_add_test(tc_core, timesCharacterRepeatedReturnsOneWhenIV);
 
     suite_add_tcase(s, tc_core);
     return s;
