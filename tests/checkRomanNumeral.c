@@ -80,6 +80,16 @@ START_TEST(toIntegerReturnsFourWhenIV)
 }
 END_TEST
 
+START_TEST(toIntegerReturnsNegativeOneWhenIIII)
+{
+    ck_assert_int_eq (toInteger("IIII"), -1);
+}
+END_TEST
+
+
+
+
+
 START_TEST(timesCharacterRepeatedReturnsZeroWhenEmptyString)
 {
     ck_assert_int_eq (timesCharacterRepeated(""), 0);
@@ -122,6 +132,7 @@ Suite* romanNumeralSuite(void)
     tcase_add_test(tc_core, toIntegerReturnsTwoWhenII);
     tcase_add_test(tc_core, toIntegerReturnsThreeWhenIII);
     tcase_add_test(tc_core, toIntegerReturnsFourWhenIV);
+    tcase_add_test(tc_core, toIntegerReturnsNegativeOneWhenIIII);
 
     tcase_add_test(tc_core, timesCharacterRepeatedReturnsZeroWhenEmptyString);
     tcase_add_test(tc_core, timesCharacterRepeatedReturnsOneWhenI);

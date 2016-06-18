@@ -50,6 +50,12 @@ void toIntegerInternal(int* totalValue, const char* startPtr, const char* ptr)
         return;
     }
 
+    if(timesCharacterRepeated(ptr) > 3)
+    {
+        *totalValue = -1;
+        return;
+    }
+
     int value = characterToValue(*ptr);
 
     if(isCharacterToRightGreater(value, ptr))
