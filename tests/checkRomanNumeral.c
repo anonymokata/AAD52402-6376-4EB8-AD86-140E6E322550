@@ -165,7 +165,7 @@ END_TEST
 START_TEST(toRomanNumeralSetsEmptyStringWhenZero)
 {
     char str[128] = "";
-    toRomanNumeral(str, str, 0);
+    toRomanNumeral(str, 0);
     ck_assert_str_eq (str, "");
 }
 END_TEST
@@ -173,7 +173,7 @@ END_TEST
 START_TEST(toRomanNumeralSetsIWhenOne)
 {
     char str[128] = "";
-    toRomanNumeral(str, str, 1);
+    toRomanNumeral(str, 1);
     ck_assert_str_eq (str, "I");
 }
 END_TEST
@@ -181,7 +181,7 @@ END_TEST
 START_TEST(toRomanNumeralSetsVWhenFive)
 {
     char str[128] = "";
-    toRomanNumeral(str, str, 5);
+    toRomanNumeral(str, 5);
     ck_assert_str_eq (str, "V");
 }
 END_TEST
@@ -189,7 +189,7 @@ END_TEST
 START_TEST(toRomanNumeralSetsXWhenTen)
 {
     char str[128] = "";
-    toRomanNumeral(str, str, 10);
+    toRomanNumeral(str, 10);
     ck_assert_str_eq (str, "X");
 }
 END_TEST
@@ -197,7 +197,7 @@ END_TEST
 START_TEST(toRomanNumeralSetsLWhenFifty)
 {
     char str[128] = "";
-    toRomanNumeral(str, str, 50);
+    toRomanNumeral(str, 50);
     ck_assert_str_eq (str, "L");
 }
 END_TEST
@@ -205,7 +205,7 @@ END_TEST
 START_TEST(toRomanNumeralSetsCWhenOneHundred)
 {
     char str[128] = "";
-    toRomanNumeral(str, str, 100);
+    toRomanNumeral(str, 100);
     ck_assert_str_eq (str, "C");
 }
 END_TEST
@@ -213,7 +213,7 @@ END_TEST
 START_TEST(toRomanNumeralSetsDWhenFiveHundred)
 {
     char str[128] = "";
-    toRomanNumeral(str, str, 500);
+    toRomanNumeral(str, 500);
     ck_assert_str_eq (str, "D");
 }
 END_TEST
@@ -221,7 +221,7 @@ END_TEST
 START_TEST(toRomanNumeralSetsMWhenOneThousand)
 {
     char str[128] = "";
-    toRomanNumeral(str, str, 1000);
+    toRomanNumeral(str, 1000);
     ck_assert_str_eq (str, "M");
 }
 END_TEST
@@ -229,7 +229,7 @@ END_TEST
 START_TEST(toRomanNumeralSetsIVWhenFour)
 {
     char str[128] = "";
-    toRomanNumeral(str, str, 4);
+    toRomanNumeral(str, 4);
     ck_assert_str_eq (str, "IV");
 }
 END_TEST
@@ -237,7 +237,7 @@ END_TEST
 START_TEST(toRomanNumeralSetsIXWhenNine)
 {
     char str[128] = "";
-    toRomanNumeral(str, str, 9);
+    toRomanNumeral(str, 9);
     ck_assert_str_eq (str, "IX");
 }
 END_TEST
@@ -245,7 +245,7 @@ END_TEST
 START_TEST(toRomanNumeralSetsXLWhenForty)
 {
     char str[128] = "";
-    toRomanNumeral(str, str, 40);
+    toRomanNumeral(str, 40);
     ck_assert_str_eq (str, "XL");
 }
 END_TEST
@@ -253,7 +253,7 @@ END_TEST
 START_TEST(toRomanNumeralSetsXLWhenNinety)
 {
     char str[128] = "";
-    toRomanNumeral(str, str, 90);
+    toRomanNumeral(str, 90);
     ck_assert_str_eq (str, "XC");
 }
 END_TEST
@@ -261,7 +261,7 @@ END_TEST
 START_TEST(toRomanNumeralSetsCDWhenFourHundred)
 {
     char str[128] = "";
-    toRomanNumeral(str, str, 400);
+    toRomanNumeral(str, 400);
     ck_assert_str_eq (str, "CD");
 }
 END_TEST
@@ -269,7 +269,7 @@ END_TEST
 START_TEST(toRomanNumeralSetsCMWhenNineHundred)
 {
     char str[128] = "";
-    toRomanNumeral(str, str, 900);
+    toRomanNumeral(str, 900);
     ck_assert_str_eq (str, "CM");
 }
 END_TEST
