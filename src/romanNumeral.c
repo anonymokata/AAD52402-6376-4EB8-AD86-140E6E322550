@@ -2,6 +2,9 @@
 #include <string.h>
 #include <stdio.h>
 
+const int INVALID_TOTAL_VALUE = -1;
+const int INVALID_CHARACTER_VALUE = -1;
+
 int characterToValue(const char c)
 {
     switch (c)
@@ -13,14 +16,14 @@ int characterToValue(const char c)
         case 'C' : return 100;
         case 'D' : return 500;
         case 'M' : return 1000;
-        default  : return -1;
+        default  : return INVALID_CHARACTER_VALUE;
     }
 }
 
-int isCharacterToRightGreater(const int value, const char* ptr)
+int isCharacterToRightGreater(const int characterValue, const char* ptr)
 {
     const char rightChar = *(ptr + 1);
-    return rightChar != '\0' && characterToValue(rightChar) > value;
+    return rightChar != '\0' && characterToValue(rightChar) > characterValue;
 }
 
 int timesCharacterRepeated(const char* ptr)
@@ -40,43 +43,42 @@ int timesCharacterRepeated(const char* ptr)
 
 int maximumAllowedRepeats(const char* ptr)
 {
-    int repeats = 1;
-    if(*ptr == 'I' || *ptr == 'X' || *ptr == 'C')
+    switch (*ptr)
     {
-        repeats = 3;
+        case 'I' :
+        case 'X' :
+        case 'C' :
+            return 3;
+        case 'V' :
+        case 'L' :
+        case 'D' :
+        case 'M' :
+            return 1;
+        default:
+            return 0;
     }
-    return repeats;
 }
 
 void toIntegerInternal(int* totalValue, const char* startPtr, const char* ptr)
 {
-    if(totalValue < 0)
+    if(*totalValue == INVALID_TOTAL_VALUE || ptr < startPtr)
     {
         return;
     }
        
-    if(ptr < startPtr)
+    int characterValue = characterToValue(*ptr);
+    if(characterValue != INVALID_CHARACTER_VALUE && timesCharacterRepeated(ptr) > maximumAllowedRepeats(ptr))
     {
+        *totalValue = INVALID_TOTAL_VALUE;
         return;
     }
 
-    int value = characterToValue(*ptr);
-
-    if(value > 0)
+    if(isCharacterToRightGreater(characterValue, ptr))
     {
-        if(timesCharacterRepeated(ptr) > maximumAllowedRepeats(ptr))
-        {
-            *totalValue = -1;
-            return;
-        }
+        characterValue *= -1;
     }
 
-    if(isCharacterToRightGreater(value, ptr))
-    {
-        value *= -1;
-    }
-
-    *totalValue += value;
+    *totalValue += characterValue;
 
     toIntegerInternal(totalValue, startPtr, ptr - 1);
 }
@@ -180,5 +182,6 @@ void toRomanNumeralInternal(char* str, char* ptr, const int totalValue)
 
 void toRomanNumeral(char* str, const int totalValue)
 {
+    *str = '\0';
     toRomanNumeralInternal(str, str, totalValue);
 }
