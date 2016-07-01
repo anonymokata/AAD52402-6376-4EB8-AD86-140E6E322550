@@ -32,11 +32,4 @@
 *.dSYM/
 *.su
 
-build/
-CMakeCache.txt
-CMakeFiles/
-Makefile
-cmake_install.cmake
-
 *.swp
-tests/romanNumeralTests
