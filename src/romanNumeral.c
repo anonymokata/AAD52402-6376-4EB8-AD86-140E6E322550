@@ -80,7 +80,7 @@ void toIntegerInternal(int* totalValue, const char* startPtr, const char* ptr)
 
     *totalValue += characterValue;
 
-    toIntegerInternal(totalValue, startPtr, ptr - 1);
+    toIntegerInternal(totalValue, startPtr, &ptr[-1]);
 }
 
 int toInteger(const char* str)
@@ -177,7 +177,7 @@ void toRomanNumeralInternal(char* str, char* ptr, const int totalValue)
         return;
     }
 
-    toRomanNumeralInternal(str, ptr + offset, totalValue - value);
+    toRomanNumeralInternal(str, &ptr[offset], totalValue - value);
 }
 
 void toRomanNumeral(char* str, const int totalValue)
