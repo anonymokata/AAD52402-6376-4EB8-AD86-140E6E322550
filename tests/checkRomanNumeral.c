@@ -276,102 +276,6 @@ START_TEST(toRomanNumeralSetsCMWhenNineHundred)
 }
 END_TEST
 
-//======================================================
-// Addition Tests
-//======================================================
-
-START_TEST(addEmptyStringandEmptyStringReturnsEmptyString)
-{
-    char str[128] = "";
-    toRomanNumeral( str, toInteger("") + toInteger("") );
-    ck_assert_str_eq (str, "");
-}
-END_TEST
-
-START_TEST(addEmptyStringandIReturnsI)
-{
-    char str[128] = "";
-    toRomanNumeral( str, toInteger("") + toInteger("I") );
-    ck_assert_str_eq (str, "I");
-}
-END_TEST
-
-START_TEST(addIandIReturnsII)
-{
-    char str[128] = "";
-    toRomanNumeral( str, toInteger("I") + toInteger("I") );
-    ck_assert_str_eq (str, "II");
-}
-END_TEST
-
-START_TEST(addIandVReturnsVI)
-{
-    char str[128] = "";
-    toRomanNumeral( str, toInteger("I") + toInteger("V") );
-    ck_assert_str_eq (str, "VI");
-}
-END_TEST
-
-START_TEST(addIIandIIReturnsIV)
-{
-    char str[128] = "";
-    toRomanNumeral( str, toInteger("II") + toInteger("II") );
-    ck_assert_str_eq (str, "IV");
-}
-END_TEST
-
-START_TEST(addXandXReturnsXX)
-{
-    char str[128] = "";
-    toRomanNumeral( str, toInteger("X") + toInteger("X") );
-    ck_assert_str_eq (str, "XX");
-}
-END_TEST
-
-START_TEST(addIVandVReturnsIX)
-{
-    char str[128] = "";
-    toRomanNumeral( str, toInteger("IV") + toInteger("V") );
-    ck_assert_str_eq (str, "IX");
-}
-END_TEST
-
-//======================================================
-// Subtraction Tests
-//======================================================
-
-START_TEST(subtractIFromIReturnsEmptyString)
-{
-    char str[128] = "";
-    toRomanNumeral( str, toInteger("I") - toInteger("I") );
-    ck_assert_str_eq (str, "");
-}
-END_TEST
-
-START_TEST(subtractEmptyStringFromIReturnsI)
-{
-    char str[128] = "";
-    toRomanNumeral( str, toInteger("I") - toInteger("") );
-    ck_assert_str_eq (str, "I");
-}
-END_TEST
-
-START_TEST(subtractIVFromXIReturnsVI)
-{
-    char str[128] = "";
-    toRomanNumeral( str, toInteger("X") - toInteger("IV") );
-    ck_assert_str_eq (str, "VI");
-}
-END_TEST
-
-START_TEST(subtractIFromVReturnsIV)
-{
-    char str[128] = "";
-    toRomanNumeral( str, toInteger("V") - toInteger("I") );
-    ck_assert_str_eq (str, "IV");
-}
-END_TEST
-
 Suite* romanNumeralSuite(void)
 {
     Suite* s = suite_create("RomanNumeralSuite");
@@ -423,22 +327,6 @@ Suite* romanNumeralSuite(void)
     tcase_add_test(tc_toRomanNumeral, toRomanNumeralSetsCDWhenFourHundred);
     tcase_add_test(tc_toRomanNumeral, toRomanNumeralSetsCMWhenNineHundred);
     suite_add_tcase(s, tc_toRomanNumeral);
-
-    TCase* tc_addition = tcase_create("AdditionTests");
-    tcase_add_test(tc_addition, addEmptyStringandEmptyStringReturnsEmptyString);
-    tcase_add_test(tc_addition, addEmptyStringandIReturnsI);
-    tcase_add_test(tc_addition, addIandIReturnsII);
-    tcase_add_test(tc_addition, addIandVReturnsVI);
-    tcase_add_test(tc_addition, addIIandIIReturnsIV);
-    tcase_add_test(tc_addition, addIVandVReturnsIX);
-    suite_add_tcase(s, tc_addition);
-
-    TCase* tc_subtraction = tcase_create("SubtractionTests");
-    tcase_add_test(tc_subtraction, subtractIFromIReturnsEmptyString);
-    tcase_add_test(tc_subtraction, subtractEmptyStringFromIReturnsI);
-    tcase_add_test(tc_subtraction, subtractIVFromXIReturnsVI);
-    tcase_add_test(tc_subtraction, subtractIFromVReturnsIV);
-    suite_add_tcase(s, tc_subtraction);
 
     return s;
 }
