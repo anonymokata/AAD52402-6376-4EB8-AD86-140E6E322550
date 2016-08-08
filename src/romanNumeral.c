@@ -22,20 +22,20 @@ int characterToValue(const char c)
 
 int isCharacterToRightGreater(const int characterValue, const char* ptr)
 {
-    const char rightChar = *(ptr + 1);
+    const char rightChar = ptr[1];
     return rightChar != '\0' && characterToValue(rightChar) > characterValue;
 }
 
 int timesCharacterRepeated(const char* ptr)
 {
-    if(*ptr == '\0')
+    if(ptr[0] == '\0')
     {
         return 0;
     }
 
-    if(*ptr == *(ptr + 1))
+    if(ptr[0] == ptr[1])
     {
-        return 1 + timesCharacterRepeated(ptr + 1);
+        return 1 + timesCharacterRepeated(&ptr[1]);
     }
 
     return 1;
@@ -43,7 +43,7 @@ int timesCharacterRepeated(const char* ptr)
 
 int maximumAllowedRepeats(const char* ptr)
 {
-    switch (*ptr)
+    switch (ptr[0])
     {
         case 'I' :
         case 'X' :
@@ -66,7 +66,7 @@ void toIntegerInternal(int* totalValue, const char* startPtr, const char* ptr)
         return;
     }
        
-    int characterValue = characterToValue(*ptr);
+    int characterValue = characterToValue(ptr[0]);
     if(characterValue != INVALID_CHARACTER_VALUE && timesCharacterRepeated(ptr) > maximumAllowedRepeats(ptr))
     {
         *totalValue = INVALID_TOTAL_VALUE;
@@ -96,84 +96,84 @@ void toRomanNumeralInternal(char* str, char* ptr, const int totalValue)
     int offset = 1;
     if(totalValue >= 1000)
     {
-        *ptr = 'M';
+        ptr[0] = 'M';
         value = 1000;
     }
     else if(totalValue >= 900)
     {
-        *ptr = 'C';
-        *(ptr + 1) = 'M';
+        ptr[0] = 'C';
+        ptr[1] = 'M';
         offset = 2;
         value = 900;
     }
     else if(totalValue >= 500)
     {
-        *ptr = 'D';
+        ptr[0] = 'D';
         value = 500;
     }
     else if(totalValue >= 400)
     {
-        *ptr = 'C';
-        *(ptr + 1) = 'D';
+        ptr[0] = 'C';
+        ptr[1] = 'D';
         offset = 2;
         value = 400;
     }
     else if(totalValue >= 100)
     {
-        *ptr = 'C';
+        ptr[0] = 'C';
         value = 100;
     }
     else if(totalValue >= 90)
     {
-        *ptr = 'X';
-        *(ptr + 1) = 'C';
+        ptr[0] = 'X';
+        ptr[1] = 'C';
         offset = 2;
         value = 90;
     }
     else if(totalValue >= 50)
     {
-        *ptr = 'L';
+        ptr[0] = 'L';
         value = 50;
     }
     else if(totalValue >= 40)
     {
-        *ptr = 'X';
-        *(ptr + 1) = 'L';
+        ptr[0] = 'X';
+        ptr[1] = 'L';
         offset = 2;
         value = 40;
     }
     else if(totalValue >= 10)
     {
-        *ptr = 'X';
+        ptr[0] = 'X';
         value = 10;
     }
     else if(totalValue >= 9)
     {
-        *ptr = 'I';
-        *(ptr + 1) = 'X';
+        ptr[0] = 'I';
+        ptr[1] = 'X';
         offset = 2;
         value = 9;
     }
     else if(totalValue >= 5)
     {
-        *ptr = 'V';
+        ptr[0] = 'V';
         value = 5;
     }
     else if(totalValue >= 4)
     {
-        *ptr = 'I';
-        *(ptr + 1) = 'V';
+        ptr[0] = 'I';
+        ptr[1] = 'V';
         offset = 2;
         value = 4;
     }
     else if(totalValue >= 1)
     {
-        *ptr = 'I';
+        ptr[0] = 'I';
         value = 1;
     }
     else
     {
-        *ptr = '\0';
+        ptr[0] = '\0';
         return;
     }
 
@@ -182,6 +182,6 @@ void toRomanNumeralInternal(char* str, char* ptr, const int totalValue)
 
 void toRomanNumeral(char* str, const int totalValue)
 {
-    *str = '\0';
+    str[0] = '\0';
     toRomanNumeralInternal(str, str, totalValue);
 }
