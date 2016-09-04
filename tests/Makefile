@@ -1,5 +1,10 @@
 TARGET = romanNumeralTests
 
+all: $(TARGET)
+
+test: $(TARGET) 
+	./$(TARGET)
+
 $(TARGET): checkRomanNumeral.o
 	gcc $^ -o $@ -L../src -lRomanNumeral -lcheck -lpthread -lcheck_pic -lrt -lm
 
