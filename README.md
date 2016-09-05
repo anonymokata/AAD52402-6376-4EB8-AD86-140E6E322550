@@ -1,12 +1,23 @@
-# Roman Numeral Calculator
+## Roman Numeral Calculator kata ##
 
-Obviously the check libraries are needed.
+The libcheck libraries are needed to build.
+To install libcheck on Ubuntu 14.04: 
+```
+    sudo apt-get install check
+```
+My submission is on branch master. Other branches are me playing around.
 
-My submission is on branch master. Any other branch is me just playing around.
-
-To build the library and the test executable run "make" in the root source directory.
-
-The tests executable will be generated at tests/romanNumeralTests
-
+To build the library and the test executable:
+```
+    make
+```
+To run the tests:
+```
+    make test
+```
+The continuous integration build for this can be found at:
+```
+    http://lion.guynes.net/ci/job/RomanNumeralCalculator/
+```
 
 Any questions should be directed to wguynes@pillartechnology.com
