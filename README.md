@@ -11,11 +11,11 @@ To build the library and the test executable:
 ```
     make
 ```
-To run the tests:
+Or, to build everything and run the tests:
 ```
     make test
 ```
-The continuous integration build for this can be found at:
+The continuous integration jobs for this can be found at:
 ```
     http://lion.guynes.net/ci/job/RomanNumeralCalculator/
 ```

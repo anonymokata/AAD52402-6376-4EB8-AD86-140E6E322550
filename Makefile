@@ -16,7 +16,7 @@ $(SUBCLEAN): %.clean:
 	$(MAKE) -C $* clean
 
 
-SUBTEST = $(addsuffix .test,tests)
+SUBTEST = $(addsuffix .test,$(SUBDIRS))
 .PHONY: test $(SUBTEST)
 test: $(SUBTEST)
 $(SUBTEST): %.test:

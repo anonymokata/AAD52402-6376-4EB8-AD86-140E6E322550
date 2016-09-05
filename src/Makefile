@@ -8,3 +8,6 @@ romanNumeral.o: romanNumeral.c romanNumeral.h
 
 clean:
 	rm -f *.o *.a $(TARGET)
+
+.PHONY: test
+test: $(TARGET)
