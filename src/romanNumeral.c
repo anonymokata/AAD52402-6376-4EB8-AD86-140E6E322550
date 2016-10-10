@@ -204,5 +204,8 @@ void addRomanNumerals(char* result, const char* romanNumeral1, const char* roman
 
 void subtractRomanNumerals(char* result, const char* romanNumeral1, const char* romanNumeral2)
 {
-    toRomanNumeral(result, toInteger(romanNumeral1) - toInteger(romanNumeral2));
+    if(romanNumeral1 != NULL && romanNumeral2 != NULL)
+    {
+   	toRomanNumeral(result, toInteger(romanNumeral1) - toInteger(romanNumeral2));
+    }
 }

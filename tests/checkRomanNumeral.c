@@ -336,6 +336,26 @@ END_TEST
 // subtraction Tests
 //======================================================
 
+START_TEST(test_subtractRomanNumeralsDoesNothingWhenLHSIsNull)
+{
+    char result[128] = "";
+    char* romanNumeral1 = NULL;
+    char romanNumeral2[] = "X";
+    addRomanNumerals(result, romanNumeral1, romanNumeral2);
+    ck_assert_str_eq (result, "");
+}
+END_TEST
+
+START_TEST(test_subtractRomanNumeralsDoesNothingWhenRHSIsNull)
+{
+    char result[128] = "";
+    char romanNumeral1[] = "X";
+    char* romanNumeral2 = NULL;
+    addRomanNumerals(result, romanNumeral1, romanNumeral2);
+    ck_assert_str_eq (result, "");
+}
+END_TEST
+
 START_TEST(test_subtractRomanNumeralsSubtractsThreeMinusTwoResultingInOne)
 {
     char result[128] = "";
@@ -418,6 +438,8 @@ Suite* romanNumeralSuite(void)
     suite_add_tcase(s, tc_addRomanNumerals);
 
     TCase* tc_subtractRomanNumerals = tcase_create("subtractRomanNumerals");
+    tcase_add_test(tc_addRomanNumerals, test_subtractRomanNumeralsDoesNothingWhenLHSIsNull);
+    tcase_add_test(tc_addRomanNumerals, test_subtractRomanNumeralsDoesNothingWhenRHSIsNull);
     tcase_add_test(tc_subtractRomanNumerals, test_subtractRomanNumeralsSubtractsThreeMinusTwoResultingInOne);
     tcase_add_test(tc_subtractRomanNumerals, test_subtractRomanNumeralsSubtractsFourMinusOneResultingInThree);
     suite_add_tcase(s, tc_subtractRomanNumerals);
