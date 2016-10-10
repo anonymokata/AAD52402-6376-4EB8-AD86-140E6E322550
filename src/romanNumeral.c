@@ -90,7 +90,7 @@ int toInteger(const char* str)
     return i;
 }
 
-void toRomanNumeralInternal(char* str, char* ptr, const int totalValue)
+void toRomanNumeralInternal(char* ptr, const int totalValue)
 {
     int value = 0;
     int offset = 1;
@@ -177,13 +177,13 @@ void toRomanNumeralInternal(char* str, char* ptr, const int totalValue)
         return;
     }
 
-    toRomanNumeralInternal(str, &ptr[offset], totalValue - value);
+    toRomanNumeralInternal(&ptr[offset], totalValue - value);
 }
 
 void toRomanNumeral(char* str, const int totalValue)
 {
     str[0] = '\0';
-    toRomanNumeralInternal(str, str, totalValue);
+    toRomanNumeralInternal(str, totalValue);
 }
 
 void addRomanNumerals(char* result, const char* romanNumeral1, const char* romanNumeral2)
