@@ -85,6 +85,11 @@ void toIntegerInternal(int* totalValue, const char* startPtr, const char* ptr)
 
 int toInteger(const char* str)
 {
+    if(str == NULL)
+    {
+        return INVALID_TOTAL_VALUE;
+    }
+
     int i = 0;
     toIntegerInternal(&i, str, &str[ strlen(str) - 1 ]);
     return i;

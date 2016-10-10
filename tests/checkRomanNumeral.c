@@ -6,6 +6,12 @@
 // toInteger Tests
 //======================================================
 
+START_TEST(test_toIntegerReturnsNegativeOneWhenNullPointer)
+{
+    ck_assert_int_eq (toInteger(NULL), -1);
+}
+END_TEST
+
 START_TEST(test_toIntegerReturnsZero)
 {
     ck_assert_int_eq (toInteger(""), 0);
@@ -329,6 +335,7 @@ Suite* romanNumeralSuite(void)
     Suite* s = suite_create("RomanNumeralSuite");
 
     TCase* tc_toInteger = tcase_create("toInteger");
+    tcase_add_test(tc_toInteger, test_toIntegerReturnsNegativeOneWhenNullPointer);
     tcase_add_test(tc_toInteger, test_toIntegerReturnsZero);
     tcase_add_test(tc_toInteger, test_toIntegerReturnsOneWhenI);
     tcase_add_test(tc_toInteger, test_toIntegerReturnsTenWhenX);
