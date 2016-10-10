@@ -292,6 +292,26 @@ END_TEST
 // addition Tests
 //======================================================
 
+START_TEST(test_addRomanNumeralsDoesNothingWhenLHSIsNull)
+{
+    char result[128] = "";
+    char* romanNumeral1 = NULL;
+    char romanNumeral2[] = "X";
+    addRomanNumerals(result, romanNumeral1, romanNumeral2);
+    ck_assert_str_eq (result, "");
+}
+END_TEST
+
+START_TEST(test_addRomanNumeralsDoesNothingWhenRHSIsNull)
+{
+    char result[128] = "";
+    char romanNumeral1[] = "X";
+    char* romanNumeral2 = NULL;
+    addRomanNumerals(result, romanNumeral1, romanNumeral2);
+    ck_assert_str_eq (result, "");
+}
+END_TEST
+
 START_TEST(test_addRomanNumeralsAddsOneAndOneToTwo)
 {
     char result[128] = "";
@@ -391,6 +411,8 @@ Suite* romanNumeralSuite(void)
     suite_add_tcase(s, tc_toRomanNumeral);
 
     TCase* tc_addRomanNumerals = tcase_create("addRomanNumerals");
+    tcase_add_test(tc_addRomanNumerals, test_addRomanNumeralsDoesNothingWhenLHSIsNull);
+    tcase_add_test(tc_addRomanNumerals, test_addRomanNumeralsDoesNothingWhenRHSIsNull);
     tcase_add_test(tc_addRomanNumerals, test_addRomanNumeralsAddsOneAndOneToTwo);
     tcase_add_test(tc_addRomanNumerals, test_addRomanNumeralsAddsTwoAndTwoToFour);
     suite_add_tcase(s, tc_addRomanNumerals);
