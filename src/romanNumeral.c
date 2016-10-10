@@ -188,6 +188,10 @@ void toRomanNumeral(char* str, const int totalValue)
 
 void addRomanNumerals(char* result, const char* romanNumeral1, const char* romanNumeral2)
 {
-    int foo = toInteger(romanNumeral1) + toInteger(romanNumeral2);
-    toRomanNumeral(result, foo);
+    toRomanNumeral(result, toInteger(romanNumeral1) + toInteger(romanNumeral2));
+}
+
+void subtractRomanNumerals(char* result, const char* romanNumeral1, const char* romanNumeral2)
+{
+    toRomanNumeral(result, toInteger(romanNumeral1) - toInteger(romanNumeral2));
 }
