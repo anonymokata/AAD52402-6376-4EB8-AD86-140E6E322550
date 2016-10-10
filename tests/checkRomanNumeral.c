@@ -276,6 +276,20 @@ START_TEST(toRomanNumeralSetsCMWhenNineHundred)
 }
 END_TEST
 
+//======================================================
+// addition Tests
+//======================================================
+
+START_TEST(test_addRomanNumerals)
+{
+    char result[128] = "";
+    char romanNumeral1[] = "I";
+    char romanNumeral2[] = "I";
+    addRomanNumerals(result, romanNumeral1, romanNumeral2);
+    ck_assert_str_eq (result, "II");
+}
+END_TEST
+
 Suite* romanNumeralSuite(void)
 {
     Suite* s = suite_create("RomanNumeralSuite");
@@ -327,6 +341,10 @@ Suite* romanNumeralSuite(void)
     tcase_add_test(tc_toRomanNumeral, toRomanNumeralSetsCDWhenFourHundred);
     tcase_add_test(tc_toRomanNumeral, toRomanNumeralSetsCMWhenNineHundred);
     suite_add_tcase(s, tc_toRomanNumeral);
+
+    TCase* tc_addRomanNumerals = tcase_create("addRomanNumerals");
+    tcase_add_test(tc_addRomanNumerals, test_addRomanNumerals);
+    suite_add_tcase(s, tc_addRomanNumerals);
 
     return s;
 }
