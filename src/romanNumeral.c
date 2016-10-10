@@ -187,8 +187,11 @@ void toRomanNumeralInternal(char* ptr, const int totalValue)
 
 void toRomanNumeral(char* str, const int totalValue)
 {
-    str[0] = '\0';
-    toRomanNumeralInternal(str, totalValue);
+    if(str != NULL)
+    {	
+        str[0] = '\0';
+        toRomanNumeralInternal(str, totalValue);
+    }
 }
 
 void addRomanNumerals(char* result, const char* romanNumeral1, const char* romanNumeral2)

@@ -170,6 +170,12 @@ END_TEST
 // toRomanNumeral Tests
 //======================================================
 
+START_TEST(test_toRomanNumeralDoesNotSegfaultWhenNullPointerPassedIn)
+{
+    toRomanNumeral(NULL, 0);
+}
+END_TEST
+
 START_TEST(test_toRomanNumeralSetsEmptyStringWhenZero)
 {
     char str[128] = "";
@@ -367,6 +373,7 @@ Suite* romanNumeralSuite(void)
     suite_add_tcase(s, tc_timesCharacterRepeated);
 
     TCase* tc_toRomanNumeral = tcase_create("toRomanNumeral");
+    tcase_add_test(tc_toRomanNumeral, test_toRomanNumeralDoesNotSegfaultWhenNullPointerPassedIn);
     tcase_add_test(tc_toRomanNumeral, test_toRomanNumeralSetsEmptyStringWhenZero);
     tcase_add_test(tc_toRomanNumeral, test_toRomanNumeralSetsIWhenOne);
     tcase_add_test(tc_toRomanNumeral, test_toRomanNumeralSetsVWhenFive);
