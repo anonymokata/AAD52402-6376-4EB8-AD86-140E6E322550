@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdio.h>
 
-const int INVALID_TOTAL_VALUE = -1;
+const int INVALID_VALUE = -1;
 const int INVALID_CHARACTER_VALUE = -1;
 
 typedef struct ValueToStringMap_S
@@ -92,7 +92,7 @@ int maximumAllowedRepeats(const char* ptr)
 
 void toIntegerInternal(int* value, const char* startPtr, const char* ptr)
 {
-    if(*value == INVALID_TOTAL_VALUE || ptr < startPtr)
+    if(*value == INVALID_VALUE || ptr < startPtr)
     {
         return;
     }
@@ -100,7 +100,7 @@ void toIntegerInternal(int* value, const char* startPtr, const char* ptr)
     int characterValue = characterToValue(ptr[0]);
     if(characterValue != INVALID_CHARACTER_VALUE && timesCharacterRepeated(ptr) > maximumAllowedRepeats(ptr))
     {
-        *value = INVALID_TOTAL_VALUE;
+        *value = INVALID_VALUE;
         return;
     }
 
@@ -118,7 +118,7 @@ int toInteger(const char* str)
 {
     if(str == NULL)
     {
-        return INVALID_TOTAL_VALUE;
+        return INVALID_VALUE;
     }
 
     int i = 0;
@@ -157,18 +157,18 @@ void toRomanNumeral(char* str, const int value)
     }
 }
 
-void addRomanNumerals(char* result, const char* romanNumeral1, const char* romanNumeral2)
+void addRomanNumerals(char* result, const char* lhs, const char* rhs)
 {
-    if(romanNumeral1 != NULL && romanNumeral2 != NULL)
+    if(lhs != NULL && rhs != NULL)
     {
-        toRomanNumeral(result, toInteger(romanNumeral1) + toInteger(romanNumeral2));
+        toRomanNumeral(result, toInteger(lhs) + toInteger(rhs));
     }
 }
 
-void subtractRomanNumerals(char* result, const char* romanNumeral1, const char* romanNumeral2)
+void subtractRomanNumerals(char* result, const char* lhs, const char* rhs)
 {
-    if(romanNumeral1 != NULL && romanNumeral2 != NULL)
+    if(lhs != NULL && rhs != NULL)
     {
-        toRomanNumeral(result, toInteger(romanNumeral1) - toInteger(romanNumeral2));
+        toRomanNumeral(result, toInteger(lhs) - toInteger(rhs));
     }
 }
