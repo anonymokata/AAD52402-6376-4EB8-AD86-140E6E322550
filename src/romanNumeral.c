@@ -12,19 +12,19 @@ typedef struct ValueToStringMap_S
 } ValueToStringMap;
 
 const ValueToStringMap VALUE_TO_STRING_MAP[] = {
-    { .value = 1000, .str = "M" },
-    { .value = 900, .str = "CM" },
-    { .value = 500, .str = "D" },
-    { .value = 400, .str = "CD" },
-    { .value = 100, .str = "C" },
-    { .value = 90, .str = "XC" },
-    { .value = 50, .str = "L" },
-    { .value = 40, .str = "XL" },
-    { .value = 10, .str = "X" },
-    { .value = 9, .str = "IX" },
-    { .value = 5, .str = "V" },
-    { .value = 4, .str = "IV" },
-    { .value = 1, .str = "I" }
+    { 1000, "M" },
+    { 900, "CM" },
+    { 500, "D" },
+    { 400, "CD" },
+    { 100, "C" },
+    { 90, "XC" },
+    { 50, "L" },
+    { 40, "XL" },
+    { 10, "X" },
+    { 9, "IX" },
+    { 5, "V" },
+    { 4, "IV" },
+    { 1, "I" }
 };
 const int VALUE_TO_STRING_MAP_LENGTH = sizeof(VALUE_TO_STRING_MAP) / sizeof(VALUE_TO_STRING_MAP[0]);
 
