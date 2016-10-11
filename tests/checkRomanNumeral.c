@@ -316,6 +316,14 @@ START_TEST(test_toRomanNumeralDoesNothingWhenFourThousand)
 }
 END_TEST
 
+START_TEST(test_toRomanNumeralSetsMMMCMXCIXWhenThreeThousandNineHundredAndNinetyNine)
+{
+    char str[128] = "";
+    toRomanNumeral(str, 3999);
+    ck_assert_str_eq (str, "MMMCMXCIX");
+}
+END_TEST
+
 //======================================================
 // addition Tests
 //======================================================
@@ -460,6 +468,7 @@ Suite* romanNumeralSuite(void)
     tcase_add_test(tc_toRomanNumeral, test_toRomanNumeralSetsCDWhenFourHundred);
     tcase_add_test(tc_toRomanNumeral, test_toRomanNumeralSetsCMWhenNineHundred);
     tcase_add_test(tc_toRomanNumeral, test_toRomanNumeralDoesNothingWhenFourThousand);
+    tcase_add_test(tc_toRomanNumeral, test_toRomanNumeralSetsMMMCMXCIXWhenThreeThousandNineHundredAndNinetyNine);
     suite_add_tcase(s, tc_toRomanNumeral);
 
     TCase* tc_addRomanNumerals = tcase_create("addRomanNumerals");
