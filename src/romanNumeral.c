@@ -187,7 +187,7 @@ void toRomanNumeralInternal(char* ptr, const int totalValue)
 
 void toRomanNumeral(char* str, const int totalValue)
 {
-    if(str != NULL && totalValue >= 0)
+    if(str != NULL && totalValue >= 0 && totalValue < 4000)
     {	
         str[0] = '\0';
         toRomanNumeralInternal(str, totalValue);
