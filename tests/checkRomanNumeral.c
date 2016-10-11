@@ -144,6 +144,12 @@ START_TEST(test_toIntegerReturnsThreeThousandWhenMMM)
 }
 END_TEST
 
+START_TEST(test_toIntegerReturnsNegativeOneWhenMMMM)
+{
+    ck_assert_int_eq (toInteger("MMMM"), -1);
+}
+END_TEST
+
 //======================================================
 // timesCharacterRepeated Tests
 //======================================================
@@ -410,6 +416,7 @@ Suite* romanNumeralSuite(void)
     tcase_add_test(tc_toInteger, test_toIntegerReturnsFiveHundredWhenD);
     tcase_add_test(tc_toInteger, test_toIntegerReturnsNegativeOneWhenDD);
     tcase_add_test(tc_toInteger, test_toIntegerReturnsThreeThousandWhenMMM);
+    tcase_add_test(tc_toInteger, test_toIntegerReturnsNegativeOneWhenMMMM);
     suite_add_tcase(s, tc_toInteger);
 
     TCase* tc_timesCharacterRepeated = tcase_create("timesCharacterRepeated");
