@@ -11,7 +11,7 @@ typedef struct ValueToStringMap_S
     char* str;
 } ValueToStringMap;
 
-ValueToStringMap valueToStringMap[] = {
+const ValueToStringMap VALUE_TO_STRING_MAP[] = {
     { .value = 1000, .str = "M" },
     { .value = 900, .str = "CM" },
     { .value = 500, .str = "D" },
@@ -26,6 +26,7 @@ ValueToStringMap valueToStringMap[] = {
     { .value = 4, .str = "IV" },
     { .value = 1, .str = "I" }
 };
+const int VALUE_TO_STRING_MAP_LENGTH = sizeof(VALUE_TO_STRING_MAP) / sizeof(VALUE_TO_STRING_MAP[0]);
 
 int characterToValue(const char c)
 {
@@ -127,18 +128,18 @@ int toInteger(const char* str)
 
 void toRomanNumeralInternal(char* ptr, int* value)
 {
-    if(*value <= 0)
+    if(*value < VALUE_TO_STRING_MAP[VALUE_TO_STRING_MAP_LENGTH - 1].value)
     {
         return;
     }   
 
     int i = 0;
-    for(i = 0; i < 13; ++i)
+    for(i = 0; i < VALUE_TO_STRING_MAP_LENGTH; ++i)
     {
-        if(*value >= valueToStringMap[i].value)
+        if(*value >= VALUE_TO_STRING_MAP[i].value)
         {
-            *value -= valueToStringMap[i].value;
-            strcat(ptr, valueToStringMap[i].str);
+            *value -= VALUE_TO_STRING_MAP[i].value;
+            strcat(ptr, VALUE_TO_STRING_MAP[i].str);
             break;
         }
     }
