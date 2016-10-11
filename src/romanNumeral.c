@@ -48,11 +48,11 @@ int maximumAllowedRepeats(const char* ptr)
         case 'I' :
         case 'X' :
         case 'C' :
+        case 'M' :
             return 3;
         case 'V' :
         case 'L' :
         case 'D' :
-        case 'M' :
             return 1;
         default:
             return 0;
