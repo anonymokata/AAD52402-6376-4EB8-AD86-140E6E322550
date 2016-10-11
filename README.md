@@ -15,8 +15,8 @@ Or, to build everything and run the tests:
 ```
     make test
 ```
-My [continuous integration server](http://lion.guynes.net/ci/job/RomanNumeralCalculator/)
-```
+Link to my [continuous integration](http://lion.guynes.net/ci/job/RomanNumeralCalculator/) server
+
 ### For any that are concerned about my use of recursion. ###
 
 There are three recursive functions.
