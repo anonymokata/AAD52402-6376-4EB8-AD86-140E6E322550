@@ -26,6 +26,17 @@ int isCharacterToRightGreater(const int characterValue, const char* ptr)
     return rightChar != '\0' && characterToValue(rightChar) > characterValue;
 }
 
+void timesCharacterRepeatedInternal(const char* ptr, int* countPtr)
+{
+    if(ptr[0] != ptr[1])
+    {
+	return;
+    }
+
+    ++(*countPtr);
+    timesCharacterRepeatedInternal(&ptr[1], countPtr);
+}
+
 int timesCharacterRepeated(const char* ptr)
 {
     if(ptr[0] == '\0')
@@ -33,12 +44,9 @@ int timesCharacterRepeated(const char* ptr)
         return 0;
     }
 
-    if(ptr[0] == ptr[1])
-    {
-        return 1 + timesCharacterRepeated(&ptr[1]);
-    }
-
-    return 1;
+    int count = 1;
+    timesCharacterRepeatedInternal(ptr, &count);
+    return count;
 }
 
 int maximumAllowedRepeats(const char* ptr)
@@ -188,7 +196,7 @@ void toRomanNumeralInternal(char* ptr, const int totalValue)
 void toRomanNumeral(char* str, const int totalValue)
 {
     if(str != NULL && totalValue >= 0 && totalValue < 4000)
-    {	
+    {
         str[0] = '\0';
         toRomanNumeralInternal(str, totalValue);
     }
@@ -206,6 +214,6 @@ void subtractRomanNumerals(char* result, const char* romanNumeral1, const char* 
 {
     if(romanNumeral1 != NULL && romanNumeral2 != NULL)
     {
-   	toRomanNumeral(result, toInteger(romanNumeral1) - toInteger(romanNumeral2));
+        toRomanNumeral(result, toInteger(romanNumeral1) - toInteger(romanNumeral2));
     }
 }
