@@ -5,6 +5,28 @@
 const int INVALID_TOTAL_VALUE = -1;
 const int INVALID_CHARACTER_VALUE = -1;
 
+typedef struct ValueToStringMap_S
+{
+    int value;
+    char* str;
+} ValueToStringMap;
+
+ValueToStringMap valueToStringMap[] = {
+    { .value = 1000, .str = "M" },
+    { .value = 900, .str = "CM" },
+    { .value = 500, .str = "D" },
+    { .value = 400, .str = "CD" },
+    { .value = 100, .str = "C" },
+    { .value = 90, .str = "XC" },
+    { .value = 50, .str = "L" },
+    { .value = 40, .str = "XL" },
+    { .value = 10, .str = "X" },
+    { .value = 9, .str = "IX" },
+    { .value = 5, .str = "V" },
+    { .value = 4, .str = "IV" },
+    { .value = 1, .str = "I" }
+};
+
 int characterToValue(const char c)
 {
     switch (c)
@@ -103,102 +125,34 @@ int toInteger(const char* str)
     return i;
 }
 
-void toRomanNumeralInternal(char* ptr, const int totalValue)
+void toRomanNumeralInternal(char* ptr, int* value)
 {
-    int value = 0;
-    int offset = 1;
-    if(totalValue >= 1000)
+    if(*value <= 0)
     {
-        ptr[0] = 'M';
-        value = 1000;
-    }
-    else if(totalValue >= 900)
-    {
-        ptr[0] = 'C';
-        ptr[1] = 'M';
-        offset = 2;
-        value = 900;
-    }
-    else if(totalValue >= 500)
-    {
-        ptr[0] = 'D';
-        value = 500;
-    }
-    else if(totalValue >= 400)
-    {
-        ptr[0] = 'C';
-        ptr[1] = 'D';
-        offset = 2;
-        value = 400;
-    }
-    else if(totalValue >= 100)
-    {
-        ptr[0] = 'C';
-        value = 100;
-    }
-    else if(totalValue >= 90)
-    {
-        ptr[0] = 'X';
-        ptr[1] = 'C';
-        offset = 2;
-        value = 90;
-    }
-    else if(totalValue >= 50)
-    {
-        ptr[0] = 'L';
-        value = 50;
-    }
-    else if(totalValue >= 40)
-    {
-        ptr[0] = 'X';
-        ptr[1] = 'L';
-        offset = 2;
-        value = 40;
-    }
-    else if(totalValue >= 10)
-    {
-        ptr[0] = 'X';
-        value = 10;
-    }
-    else if(totalValue >= 9)
-    {
-        ptr[0] = 'I';
-        ptr[1] = 'X';
-        offset = 2;
-        value = 9;
-    }
-    else if(totalValue >= 5)
-    {
-        ptr[0] = 'V';
-        value = 5;
-    }
-    else if(totalValue >= 4)
-    {
-        ptr[0] = 'I';
-        ptr[1] = 'V';
-        offset = 2;
-        value = 4;
-    }
-    else if(totalValue >= 1)
-    {
-        ptr[0] = 'I';
-        value = 1;
-    }
-    else
-    {
-        ptr[0] = '\0';
         return;
+    }   
+
+    int i = 0;
+    for(i = 0; i < 13; ++i)
+    {
+        if(*value >= valueToStringMap[i].value)
+        {
+            *value -= valueToStringMap[i].value;
+            strcat(ptr, valueToStringMap[i].str);
+            break;
+        }
     }
 
-    toRomanNumeralInternal(&ptr[offset], totalValue - value);
+    toRomanNumeralInternal(ptr, value);
 }
 
-void toRomanNumeral(char* str, const int totalValue)
+void toRomanNumeral(char* str, const int value)
 {
-    if(str != NULL && totalValue >= 0 && totalValue < 4000)
+    if(str != NULL && value >= 0 && value < 4000)
     {
         str[0] = '\0';
-        toRomanNumeralInternal(str, totalValue);
+        int val = value;
+        toRomanNumeralInternal(str, &val);
     }
 }
 
