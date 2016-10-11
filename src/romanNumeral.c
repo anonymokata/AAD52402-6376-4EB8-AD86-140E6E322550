@@ -90,9 +90,9 @@ int maximumAllowedRepeats(const char* ptr)
     }
 }
 
-void toIntegerInternal(int* totalValue, const char* startPtr, const char* ptr)
+void toIntegerInternal(int* value, const char* startPtr, const char* ptr)
 {
-    if(*totalValue == INVALID_TOTAL_VALUE || ptr < startPtr)
+    if(*value == INVALID_TOTAL_VALUE || ptr < startPtr)
     {
         return;
     }
@@ -100,7 +100,7 @@ void toIntegerInternal(int* totalValue, const char* startPtr, const char* ptr)
     int characterValue = characterToValue(ptr[0]);
     if(characterValue != INVALID_CHARACTER_VALUE && timesCharacterRepeated(ptr) > maximumAllowedRepeats(ptr))
     {
-        *totalValue = INVALID_TOTAL_VALUE;
+        *value = INVALID_TOTAL_VALUE;
         return;
     }
 
@@ -109,9 +109,9 @@ void toIntegerInternal(int* totalValue, const char* startPtr, const char* ptr)
         characterValue *= -1;
     }
 
-    *totalValue += characterValue;
+    *value += characterValue;
 
-    toIntegerInternal(totalValue, startPtr, &ptr[-1]);
+    toIntegerInternal(value, startPtr, &ptr[-1]);
 }
 
 int toInteger(const char* str)
