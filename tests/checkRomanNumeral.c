@@ -188,6 +188,14 @@ START_TEST(test_toRomanNumeralDoesNotSegfaultWhenNullPointerPassedIn)
 }
 END_TEST
 
+START_TEST(test_toRomanNumeralDoesNothingWhenNegativeInteger)
+{
+    char str[128] = "some_string";
+    toRomanNumeral(str, -1);
+    ck_assert_str_eq (str, "some_string");
+}
+END_TEST
+
 START_TEST(test_toRomanNumeralSetsEmptyStringWhenZero)
 {
     char str[128] = "";
@@ -428,6 +436,7 @@ Suite* romanNumeralSuite(void)
 
     TCase* tc_toRomanNumeral = tcase_create("toRomanNumeral");
     tcase_add_test(tc_toRomanNumeral, test_toRomanNumeralDoesNotSegfaultWhenNullPointerPassedIn);
+    tcase_add_test(tc_toRomanNumeral, test_toRomanNumeralDoesNothingWhenNegativeInteger);
     tcase_add_test(tc_toRomanNumeral, test_toRomanNumeralSetsEmptyStringWhenZero);
     tcase_add_test(tc_toRomanNumeral, test_toRomanNumeralSetsIWhenOne);
     tcase_add_test(tc_toRomanNumeral, test_toRomanNumeralSetsVWhenFive);
